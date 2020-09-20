@@ -4,10 +4,8 @@ from django.db import models
 
 
 class Movie(models.Model):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.title = models.CharField(max_length=32)
-        self.description = models.TextField(max_length=380)
+    title = models.CharField(max_length=32, null=False, blank=False, default='')
+    description = models.TextField(max_length=380, blank=True)
 
 
 class Rating(models.Model):
