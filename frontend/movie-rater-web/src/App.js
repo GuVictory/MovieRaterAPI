@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import './App.css';
 import MovieList from './Components/movie-list';
-
+import MovieDetails from './Components/movie-detail';
 import axios_conf from './axios-config';
 
 export default class App extends Component {
 	state = {
 		movies: [],
+		selectedMovie: null,
 	};
 
 	componentDidMount() {
@@ -21,11 +22,18 @@ export default class App extends Component {
 			});
 	}
 
+	onMovieClicked = (movie) => {
+		this.setState({ selectedMovie: movie });
+	};
+
 	render() {
 		return (
 			<div className="App">
 				<h1>Movie Rater</h1>
-				<MovieList movies={this.state.movies} />
+				<div className="layout">
+					<MovieList movies={this.state.movies} movieClicked={this.onMovieClicked} />
+					<MovieDetails movie={this.state.selectedMovie} />
+				</div>
 			</div>
 		);
 	}
