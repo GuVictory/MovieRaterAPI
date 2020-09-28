@@ -1,0 +1,28 @@
+.movie-list-item {
+	display: flex;
+	align-items: center;
+}
+
+.movie-list-item__icon-edit {
+	margin-left: 2rem;
+}
+
+.movie-list-item__icon-edit:hover {
+	color: greenyellow;
+}
+
+.movie-list-item__icon-trash {
+	margin-left: 1rem;
+}
+
+.movie-list-item__icon-trash:hover {
+	color: red;
+}
+
+.movie-list-item__icon-edit:active {
+	color: green;
+}
+
+.movie-list-item__icon-trash:active {
+	color: darkred;
+}

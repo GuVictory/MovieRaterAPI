@@ -22,8 +22,20 @@ export default class App extends Component {
 			});
 	}
 
-	onMovieClicked = (movie) => {
+	loadMovie = (movie) => {
 		this.setState({ selectedMovie: movie });
+	};
+
+	movieDeleted = (movie) => {
+		const newMovies = this.state.movies.filter((el) => {
+			return el.id !== movie.id;
+		});
+		const newSelectedMovie =
+			this.state.selectedMovie.id === movie.id ? null : this.state.selectedMovie;
+		this.setState({
+			movies: newMovies,
+			selectedMovie: newSelectedMovie,
+		});
 	};
 
 	render() {
@@ -31,8 +43,12 @@ export default class App extends Component {
 			<div className="App">
 				<h1>Movie Rater</h1>
 				<div className="layout">
-					<MovieList movies={this.state.movies} movieClicked={this.onMovieClicked} />
-					<MovieDetails movie={this.state.selectedMovie} />
+					<MovieList
+						movies={this.state.movies}
+						movieClicked={this.loadMovie}
+						movieDeleted={this.movieDeleted}
+					/>
+					<MovieDetails movie={this.state.selectedMovie} updateMovie={this.loadMovie} />
 				</div>
 			</div>
 		);

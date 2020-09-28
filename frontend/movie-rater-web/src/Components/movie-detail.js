@@ -17,8 +17,19 @@ export default class MovieDetail extends Component {
 			.post(`movies/${this.props.movie.id}/rate_movie/`, {
 				stars: star,
 			})
+			.then(() => {
+				this.updateMovie();
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+	};
+
+	updateMovie = () => {
+		axios_conf
+			.get(`movies/${this.props.movie.id}/`)
 			.then((resp) => {
-				console.log(resp);
+				this.props.updateMovie(resp.data);
 			})
 			.catch((err) => {
 				console.log(err);
@@ -49,7 +60,7 @@ export default class MovieDetail extends Component {
 							key={i}
 							onMouseEnter={this.setHiglited(i)}
 							onMouseLeave={this.setHiglited(-1)}
-							onClick={this.rateClicked(i)}
+							onClick={this.rateClicked(i + 1)}
 						/>
 					);
 				})}

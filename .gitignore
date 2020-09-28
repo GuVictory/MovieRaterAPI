@@ -477,3 +477,5 @@ pip-selfcheck.json
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+/movie-rater-web/.env

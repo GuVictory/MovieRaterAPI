@@ -2,7 +2,7 @@ const axios = require('axios').default;
 
 // Set config defaults when creating the instance
 const axios_conf = axios.create({
-	baseURL: 'http://localhost:8000/api/',
+	baseURL: process.env.REACT_APP_API_URL,
 });
 
 // Alter defaults after instance has been created
